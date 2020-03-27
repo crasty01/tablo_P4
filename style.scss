@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:700|Roboto:900&display=swap');
+
+
+$dark: #111319;
+$white: #F5F5F5;
+
+$btn--pop-up: 3.25em;
+$btn--absolute-position: 1em;
+
+* {
+  margin: 0;
+  font-family: Roboto;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 120%;
+  text-decoration: none;
+  color: currentColor;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100vh;
+  font-size: 16px;
+  color: $white;
+  overflow-x: hidden;
+}
+
+body {
+  background-image: url(./noise.png);
+  background-repeat: repeat;
+}
+
+img {
+  display: block;
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  object-position: center 33%;
+}
+
+.all {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+span {
+  display: block;
+}
+
+
+
+
+
+.all {
+  grid-template-areas: "a b c";
+  grid-template-columns: 19fr 34fr 19fr;
+
+  & .class {
+    grid-area: a;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    grid-template-columns: auto auto;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    transform: rotate(180deg);
+
+    &>span {
+      writing-mode: vertical-lr;
+      //orientation: sideways;
+    }
+  }
+
+  & .img {
+    grid-area: b;
+  }
+
+  & .arrows {
+    grid-area: b;
+  }
+
+  & .info {
+    grid-area: c;
+    display: grid;
+    align-content: flex-end;
+    row-gap: 2rem;
+    padding: 5rem 2rem;
+
+    & .name {
+      font-size: 3.75rem;
+      text-transform: uppercase;
+      display: table-caption;
+    }
+
+    & .nickname {
+      text-transform: uppercase;
+      font-size: 2.5rem;
+
+      &::before {
+        content: '';
+        height: 6px;
+        width: 2.5rem;
+        display: inline-block;
+        background-color: $white;
+        margin-bottom: calc(2rem / 3);
+        margin-right: .75rem;
+      }
+    }
+
+    & .about {
+      font-size: 1.25rem;
+      font-family: Roboto Mono;
+    }
+  }
+
+  & .arrows {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-self: flex-end;
+    justify-self: flex-start;
+    margin-bottom: 2rem;
+    transform: translateX(-3.75rem);
+
+    &>div {
+      display: block;
+      position: relative;
+      background-color: $white;
+      width: 3.75rem;
+      height: 3.75rem;
+      padding: 1.2rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $dark;
+
+        &>div {
+
+          &::after,
+          &::before {
+            background-color: $white;
+          }
+        }
+
+        div {
+          &:nth-child(2) {
+
+            animation: glitch .3s cubic-bezier(.25, .46, .45, .94) both infinite;
+            animation-timing-function: steps(1, end);
+
+            &::after,
+            &::before {
+              background-color: #f0f;
+            }
+          }
+
+          &:nth-child(1) {
+
+            animation: glitch .3s cubic-bezier(.25, .46, .45, .94) reverse both infinite;
+            animation-timing-function: steps(1, end);
+
+            &::after,
+            &::before {
+              background-color: #0ff;
+            }
+          }
+        }
+      }
+
+      &>div {
+        position: absolute;
+        top: 1.2rem;
+        bottom: 1.2rem;
+        right: 1.2rem;
+        left: 1.2rem;
+
+        &::after,
+        &::before {
+          content: '';
+          display: block;
+          background-color: $dark;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+
+        &::after {
+          left: 0;
+          height: 8px;
+        }
+
+        &::before {
+          bottom: 0;
+          width: 8px;
+        }
+
+      }
+
+      &.left>div {
+        transform: translateX(2px) rotate(-135deg);
+      }
+
+      &.right>div {
+        transform: translateX(-2px) rotate(45deg);
+      }
+    }
+  }
+}
+
+@keyframes glitch {
+  0% {
+    top: 1.2rem;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    left: 1.2rem;
+  }
+
+  20% {
+    top: calc(1.2rem + 1px);
+    bottom: calc(1.2rem - 1px);
+    right: calc(1.2rem + 1px);
+    left: calc(1.2rem - 1px);
+  }
+
+  40% {
+    top: calc(1.2rem - 1px);
+    bottom: calc(1.2rem + 1px);
+    right: calc(1.2rem + 1px);
+    left: calc(1.2rem - 1px);
+  }
+
+  60% {
+    top: calc(1.2rem + 1px);
+    bottom: calc(1.2rem - 1px);
+    right: calc(1.2rem - 1px);
+    left: calc(1.2rem + 1px);
+  }
+
+  80% {
+    top: calc(1.2rem - 1px);
+    bottom: calc(1.2rem + 1px);
+    right: calc(1.2rem - 1px);
+    left: calc(1.2rem + 1px);
+  }
+
+  to {
+    top: 1.2rem;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    left: 1.2rem;
+  }
+}
+
+@import 'glitch';
