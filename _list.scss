@@ -1,0 +1,107 @@
+.list {
+  grid-template-areas: "l";
+  grid-template-columns: 1fr;
+  place-content: center;
+  place-items: center;
+
+  &>ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+    width: fit-content;
+    gap: .5;
+
+    &>li {
+      display: blocks;
+      width: fit-content;
+
+      &>a {
+        display: block;
+        padding: 1rem 2rem;
+        width: fit-content;
+        font-size: 1.2rem;
+
+        &:hover>span {
+          &:before {
+            animation: glitch_for_list .3s cubic-bezier(.25, .46, .45, .94) both infinite;
+            animation-timing-function: steps(1, end);
+          }
+
+          &:after {
+            animation: glitch_for_list .3s cubic-bezier(.25, .46, .45, .94) reverse both infinite;
+            animation-timing-function: steps(1, end);
+          }
+        }
+
+        &>span {
+          display: inline;
+          text-transform: uppercase;
+          opacity: .8;
+          position: relative;
+
+
+
+          &:before,
+          &:after {
+            display: block;
+            content: attr(name);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            opacity: .8;
+          }
+
+          &:after {
+            color: #f0f;
+            z-index: -2;
+          }
+
+          &:before {
+            color: #0ff;
+            z-index: -1;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          &>span {
+            display: inline;
+            text-transform: uppercase;
+            opacity: 1;
+            transition: ease-in 100ms;
+          }
+        }
+      }
+    }
+  }
+}
+
+$tr: 2px;
+
+@keyframes glitch_for_list {
+  0% {
+    transform: translate(0)
+  }
+
+  20% {
+    transform: translate(-$tr, $tr)
+  }
+
+  40% {
+    transform: translate(-$tr, -$tr)
+  }
+
+  60% {
+    transform: translate($tr, $tr)
+  }
+
+  80% {
+    transform: translate($tr, -$tr)
+  }
+
+  to {
+    transform: translate(0)
+  }
+}

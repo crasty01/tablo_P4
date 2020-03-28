@@ -68,3 +68,11 @@
     }
   }
 }
+
+@media screen and (max-width: 380px) {
+  .list {
+    &>ul {
+      grid-template-columns: 1fr;
+    }
+  }
+}
