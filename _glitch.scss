@@ -4,6 +4,7 @@
 
 .glitch::before,
 .glitch::after {
+  content: attr(name);
   padding: 30px;
   margin-top: -30px;
   color: white;
@@ -16,15 +17,6 @@
   top: 0;
 }
 
-.gl1::before,
-.gl3::after {
-  content: "RADEK";
-}
-
-.gl2::before,
-.gl4::after {
-  content: "KUČERA";
-}
 
 .glitch::before {
   left: -27px;
