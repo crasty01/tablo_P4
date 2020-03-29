@@ -1,15 +1,18 @@
 .list {
+  display: grid;
   grid-template-areas: "l";
   grid-template-columns: 1fr;
   place-content: center;
   place-items: center;
+  min-height: 100vh;
+  height: auto;
 
   &>ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     list-style: none;
     width: fit-content;
-    gap: .5;
+    gap: .5rem;
 
     &>li {
       display: blocks;
@@ -78,7 +81,7 @@
   }
 }
 
-$tr: 2px;
+$tr: 1px;
 
 @keyframes glitch_for_list {
   0% {

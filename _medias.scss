@@ -37,8 +37,12 @@
 
 @media screen and (max-width: 550px) {
   .all {
-    grid-template-areas: "a""b""c";
+    grid-template-areas: "back""a""b""c";
     grid-template-columns: auto;
+  }
+
+  .back {
+    grid-area: back;
   }
 
   .class {

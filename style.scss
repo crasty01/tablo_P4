@@ -60,6 +60,120 @@ span {
   grid-template-columns: 19fr 34fr 19fr;
 }
 
+.back {
+  grid-area: c;
+  justify-self: right;
+  align-self: flex-start;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  place-items: center;
+
+  &:hover {
+    &>span {
+      &::after {
+        animation: glitch_for_list .3s cubic-bezier(.25, .46, .45, .94) both infinite;
+        animation-timing-function: steps(1, end);
+      }
+
+      &::before {
+        animation: glitch_for_list .3s cubic-bezier(.25, .46, .45, .94) reverse both infinite;
+        animation-timing-function: steps(1, end);
+      }
+    }
+
+    & .arrow-back {
+      &>div {
+        &::after {
+          animation: glitch_for_list .3s cubic-bezier(.25, .46, .45, .94) both infinite;
+          animation-timing-function: steps(1, end);
+        }
+
+        &::before {
+          animation: glitch_for_list .3s cubic-bezier(.25, .46, .45, .94) reverse both infinite;
+          animation-timing-function: steps(1, end);
+        }
+      }
+    }
+  }
+
+  &>span {
+    margin-left: .2rem;
+    position: relative;
+
+    &::after,
+    &::before {
+      content: 'CELÁ TŘÍDA';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    &::before {
+      color: #f0f;
+      z-index: -1;
+    }
+
+    &::after {
+      color: #0ff;
+      z-index: -2;
+    }
+  }
+
+  & .arrow-back {
+    display: inline-block;
+    width: 1rem;
+    position: relative;
+    height: 1rem;
+    transform: rotate(-135deg);
+
+    &>div {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: $white;
+
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+      }
+
+      &::before {
+        background-color: #f0f;
+        z-index: -1;
+      }
+
+      &::after {
+        background-color: #0ff;
+        z-index: -2;
+      }
+
+      &:first-child {
+        bottom: auto;
+        height: 6px;
+      }
+
+      &:last-child {
+        left: auto;
+        width: 6px;
+      }
+    }
+  }
+}
+
 .class {
   grid-area: a;
   display: grid;
@@ -123,7 +237,7 @@ span {
   margin-bottom: 2rem;
   transform: translateX(-3.75rem);
 
-  &>div {
+  &>a {
     display: block;
     position: relative;
     background-color: $white;
